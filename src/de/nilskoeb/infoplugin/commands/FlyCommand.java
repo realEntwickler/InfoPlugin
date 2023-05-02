@@ -64,7 +64,7 @@ public class FlyCommand implements CommandExecutor, TabCompleter {
         ArrayList<String> completements = new ArrayList<>();
 
         if (commandSender.hasPermission("infoplugin.command.fly.other")) {
-            if (strings.length == 0) {
+            if (strings.length == 2) {
                 Bukkit.getOnlinePlayers().forEach(all -> completements.add(all.getName()));
             } else {
                 Bukkit.getOnlinePlayers().stream().filter(filter -> filter.getName().startsWith(strings[0])).forEach(all -> completements.add(all.getName()));
