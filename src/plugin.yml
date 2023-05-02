@@ -2,3 +2,10 @@ name: InfoPlugin
 author: Nils Kevin Koerting-Eberhardt
 version: 1.0-SNAPSHOT
 main: de.nilskoeb.infoplugin.launcher.InfoPluginLauncher
+commands:
+  fly:
+    aliases:
+      - fliegen
+    description: De-/ oder aktiviert den Flugmodus eines Spielers
+    usage: /fly [Spieler]
+    permission: infoplugin.command.fly

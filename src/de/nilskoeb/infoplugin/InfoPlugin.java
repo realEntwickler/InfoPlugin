@@ -1,10 +1,12 @@
 package de.nilskoeb.infoplugin;
 
+import de.nilskoeb.infoplugin.commands.FlyCommand;
 import de.nilskoeb.infoplugin.launcher.InfoPluginLauncher;
 import de.nilskoeb.infoplugin.listener.PlayerJoinListener;
 import de.nilskoeb.infoplugin.listener.PlayerQuitListener;
 import de.nilskoeb.infoplugin.manager.ScoreboardManager;
 import org.bukkit.Bukkit;
+import org.bukkit.command.PluginCommand;
 
 public class InfoPlugin {
 
@@ -21,6 +23,10 @@ public class InfoPlugin {
 
         Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), infoPluginLauncher);
         Bukkit.getPluginManager().registerEvents(new PlayerQuitListener(), infoPluginLauncher);
+
+        PluginCommand flyCommand = infoPluginLauncher.getCommand("fly");
+        flyCommand.setExecutor(new FlyCommand());
+        flyCommand.setTabCompleter(new FlyCommand());
     }
 
 
