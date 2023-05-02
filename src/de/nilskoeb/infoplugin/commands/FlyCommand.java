@@ -62,6 +62,14 @@ public class FlyCommand implements CommandExecutor, TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
         ArrayList<String> completements = new ArrayList<>();
+
+        if (commandSender.hasPermission("infoplugin.command.fly.other")) {
+            if (strings.length == 0) {
+                Bukkit.getOnlinePlayers().forEach(all -> completements.add(all.getName()));
+            } else {
+                Bukkit.getOnlinePlayers().stream().filter(filter -> filter.getName().startsWith(strings[0])).forEach(all -> completements.add(all.getName()));
+            }
+        }
         return completements;
     }
 }
