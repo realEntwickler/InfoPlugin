@@ -1,5 +1,6 @@
 package de.nilskoeb.infoplugin.listener;
 
+import de.nilskoeb.infoplugin.InfoPlugin;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,5 +13,13 @@ public class PlayerJoinListener implements Listener {
         Player player = event.getPlayer();
 
         event.setJoinMessage("§8[§a§l+§8] §7" + (player.isOp() ? "§c" + player.getName() : player.getName()));
+
+        player.setScoreboard(InfoPlugin.environment().getScoreboardManager().getScoreboard());
+
+        if (player.isOp()) {
+            InfoPlugin.environment().getScoreboardManager().getAdminTeam().addEntry(player.getName());
+        } else {
+            InfoPlugin.environment().getScoreboardManager().getDefaultTeam().addEntry(player.getName());
+        }
     }
 }
