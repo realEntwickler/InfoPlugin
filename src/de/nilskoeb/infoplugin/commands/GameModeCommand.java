@@ -1,11 +1,13 @@
 package de.nilskoeb.infoplugin.commands;
 
 import de.nilskoeb.infoplugin.Prefix;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,12 +40,46 @@ public class GameModeCommand implements CommandExecutor, TabCompleter {
         gameModeAliases.put("zuschauer", GameMode.SPECTATOR);
     }
 
+    @SuppressWarnings("DuplicatedCode")
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (strings.length == 0) {
             commandSender.sendMessage(Prefix.CMD_SEE_USAGE);
         } else if (strings.length == 1) {
+            if (commandSender instanceof Player) {
+                Player player = (Player) commandSender;
 
+                String finding = gameModeAliases.keySet().stream().filter(filter -> filter.equalsIgnoreCase(strings[0])).findFirst().orElse(null);
+                if (finding != null) {
+                    player.setGameMode(gameModeAliases.get(finding));
+                    player.sendMessage(Prefix.GENERAL + "Dein Spielmodus wurde zu §e" + player.getGameMode().name() + " §7gewechselt.");
+                } else {
+                    player.sendMessage(Prefix.GENERAL + "Der angegebene Spielmodus wurde §cnicht §7gefunden.");
+                }
+            } else {
+                commandSender.sendMessage(Prefix.CMD_NOT_PLAYER);
+            }
+        } else if (strings.length == 2){
+            if (commandSender.hasPermission("infoplugin.command.gamemode.other")) {
+                String finding = gameModeAliases.keySet().stream().filter(filter -> filter.equalsIgnoreCase(strings[0])).findFirst().orElse(null);
+
+                if (finding != null) {
+                    Player targetPlayer = Bukkit.getPlayer(strings[1]);
+
+                    if (targetPlayer != null && targetPlayer.isOnline()) {
+                        targetPlayer.setGameMode(gameModeAliases.get(finding));
+                        commandSender.sendMessage(Prefix.GENERAL + "Der Spieler " + targetPlayer.getDisplayName() + " §7wurde in §e" + targetPlayer.getGameMode().name() + " §7versetzt.");
+                    } else {
+                        commandSender.sendMessage(Prefix.GENERAL + "Der Spieler §e" + strings[0] + " §7wurde §cnicht §7gefunden.");
+                    }
+                } else {
+                    commandSender.sendMessage(Prefix.GENERAL + "Der angegebene Spielmodus wurde §cnicht §7gefunden.");
+                }
+            } else {
+                commandSender.sendMessage(Prefix.CMD_NO_PERMISSION);
+            }
+        } else {
+            commandSender.sendMessage(Prefix.CMD_SEE_USAGE);
         }
         return false;
     }
