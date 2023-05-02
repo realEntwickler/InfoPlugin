@@ -12,12 +12,13 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GameModeCommand implements CommandExecutor, TabCompleter {
 
     private HashMap<String, GameMode> gameModeAliases;
 
-    public GameModeCommand () {
+    public GameModeCommand() {
         this.gameModeAliases = new HashMap<>();
         gameModeAliases.put("0", GameMode.SURVIVAL);
         gameModeAliases.put("s", GameMode.SURVIVAL);
@@ -59,7 +60,7 @@ public class GameModeCommand implements CommandExecutor, TabCompleter {
             } else {
                 commandSender.sendMessage(Prefix.CMD_NOT_PLAYER);
             }
-        } else if (strings.length == 2){
+        } else if (strings.length == 2) {
             if (commandSender.hasPermission("infoplugin.command.gamemode.other")) {
                 String finding = gameModeAliases.keySet().stream().filter(filter -> filter.equalsIgnoreCase(strings[0])).findFirst().orElse(null);
 
@@ -86,11 +87,20 @@ public class GameModeCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
-        ArrayList<String> list = new ArrayList<>();
+        List<String> list;
 
         if (strings.length == 1) {
+            list = gameModeAliases.keySet().stream().filter(filter -> filter.startsWith(strings[0])).collect(Collectors.toList());
+            return list;
+        } else if (strings.length == 2){
+            if (commandSender.hasPermission("infoplugin.command.gamemode.other")) {
+                list = new ArrayList<>();
+                Bukkit.getOnlinePlayers().stream().filter(all -> all.getName().startsWith(strings[1])).forEach(all -> list.add(all.getName()));
 
+                return list;
+            } else
+                return new ArrayList<>();
         }
-        return list;
+        return new ArrayList<>();
     }
 }
