@@ -1,6 +1,7 @@
 package de.nilskoeb.infoplugin;
 
 import de.nilskoeb.infoplugin.commands.FlyCommand;
+import de.nilskoeb.infoplugin.commands.GameModeCommand;
 import de.nilskoeb.infoplugin.launcher.InfoPluginLauncher;
 import de.nilskoeb.infoplugin.listener.PlayerJoinListener;
 import de.nilskoeb.infoplugin.listener.PlayerQuitListener;
@@ -24,9 +25,11 @@ public class InfoPlugin {
         Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), infoPluginLauncher);
         Bukkit.getPluginManager().registerEvents(new PlayerQuitListener(), infoPluginLauncher);
 
-        PluginCommand flyCommand = infoPluginLauncher.getCommand("fly");
-        flyCommand.setExecutor(new FlyCommand());
-        flyCommand.setTabCompleter(new FlyCommand());
+        infoPluginLauncher.getCommand("fly").setExecutor(new FlyCommand());
+        infoPluginLauncher.getCommand("fly").setTabCompleter(new FlyCommand());
+
+        infoPluginLauncher.getCommand("gamemode").setExecutor(new GameModeCommand());
+        infoPluginLauncher.getCommand("gamemode").setTabCompleter(new GameModeCommand());
     }
 
 
