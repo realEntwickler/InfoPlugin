@@ -30,6 +30,7 @@ public class InfoPlugin {
 
         infoPluginLauncher.getCommand("gamemode").setExecutor(new GameModeCommand());
         infoPluginLauncher.getCommand("gamemode").setTabCompleter(new GameModeCommand());
+
     }
 
 
