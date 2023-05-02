@@ -1,6 +1,8 @@
 package de.nilskoeb.infoplugin;
 
 import de.nilskoeb.infoplugin.launcher.InfoPluginLauncher;
+import de.nilskoeb.infoplugin.listener.PlayerJoinListener;
+import org.bukkit.Bukkit;
 
 public class InfoPlugin {
 
@@ -12,6 +14,8 @@ public class InfoPlugin {
         environment = this;
 
         this.infoPluginLauncher = infoPluginLauncher;
+
+        Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), infoPluginLauncher);
     }
 
     public InfoPluginLauncher getInfoPluginLauncher() {
