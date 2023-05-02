@@ -2,6 +2,7 @@ package de.nilskoeb.infoplugin;
 
 import de.nilskoeb.infoplugin.launcher.InfoPluginLauncher;
 import de.nilskoeb.infoplugin.listener.PlayerJoinListener;
+import de.nilskoeb.infoplugin.listener.PlayerQuitListener;
 import de.nilskoeb.infoplugin.manager.ScoreboardManager;
 import org.bukkit.Bukkit;
 
@@ -19,6 +20,7 @@ public class InfoPlugin {
         this.scoreboardManager = new ScoreboardManager();
 
         Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), infoPluginLauncher);
+        Bukkit.getPluginManager().registerEvents(new PlayerQuitListener(), infoPluginLauncher);
     }
 
 

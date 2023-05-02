@@ -12,7 +12,7 @@ public class PlayerJoinListener implements Listener {
     public void onPlayerJoin (PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
-        event.setJoinMessage("§8[§a§l+§8] §7" + (player.isOp() ? "§c" + player.getName() : player.getName()));
+        event.setJoinMessage("§8[§a§l+§8] §7" + (player.isOp() ? "§4" + player.getName() : player.getName()));
 
         player.setScoreboard(InfoPlugin.environment().getScoreboardManager().getScoreboard());
 
