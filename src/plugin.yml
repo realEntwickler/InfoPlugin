@@ -9,3 +9,10 @@ commands:
     description: De-/ oder aktiviert den Flugmodus eines Spielers
     usage: /fly [Spieler]
     permission: infoplugin.command.fly
+  gamemode:
+    aliases:
+      - gm
+      - spielmodus
+    description: Wechselt in den angegebenen Spielmodus
+    usage: /gamemode <0,1,2,3> [Spieler]
+    permission: infoplugin.command.gamemode
