@@ -1,0 +1,4 @@
+name: InfoPlugin
+author: Nils Kevin Koerting-Eberhardt
+version: 1.0-SNAPSHOT
+main: de.nilskoeb.infoplugin.launcher.InfoPluginLauncher
