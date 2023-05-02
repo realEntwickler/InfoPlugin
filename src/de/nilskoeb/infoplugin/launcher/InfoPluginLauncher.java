@@ -12,6 +12,6 @@ public class InfoPluginLauncher extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        super.onDisable();
+
     }
 }
