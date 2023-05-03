@@ -19,3 +19,8 @@ commands:
   schinken:
     description: Schenkt ein Stück Schinken
     usage: /schinken
+  enchant:
+    aliases:
+      - verzaubern
+      - verzauberung
+    usage: /enchant <Enchantment> [Level]

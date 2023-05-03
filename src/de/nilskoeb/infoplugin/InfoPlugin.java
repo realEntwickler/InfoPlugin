@@ -1,5 +1,6 @@
 package de.nilskoeb.infoplugin;
 
+import de.nilskoeb.infoplugin.commands.EnchantCommand;
 import de.nilskoeb.infoplugin.commands.FlyCommand;
 import de.nilskoeb.infoplugin.commands.GameModeCommand;
 import de.nilskoeb.infoplugin.commands.SchinkenCommand;
@@ -33,6 +34,7 @@ public class InfoPlugin {
         infoPluginLauncher.getCommand("gamemode").setTabCompleter(new GameModeCommand());
 
         infoPluginLauncher.getCommand("schinken").setExecutor(new SchinkenCommand());
+        infoPluginLauncher.getCommand("enchant").setExecutor(new EnchantCommand());
     }
 
 
