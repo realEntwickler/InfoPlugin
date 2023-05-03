@@ -1,6 +1,6 @@
 package de.nilskoeb.infoplugin.commands;
 
-import de.nilskoeb.infoplugin.Prefix;
+import de.nilskoeb.infoplugin.utils.Prefix;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

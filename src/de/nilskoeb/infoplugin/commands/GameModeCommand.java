@@ -1,6 +1,6 @@
 package de.nilskoeb.infoplugin.commands;
 
-import de.nilskoeb.infoplugin.Prefix;
+import de.nilskoeb.infoplugin.utils.Prefix;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;

@@ -1,4 +1,4 @@
-package de.nilskoeb.infoplugin;
+package de.nilskoeb.infoplugin.utils;
 
 public class Prefix {
 

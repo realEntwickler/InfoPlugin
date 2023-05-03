@@ -7,6 +7,7 @@ import de.nilskoeb.infoplugin.commands.SchinkenCommand;
 import de.nilskoeb.infoplugin.launcher.InfoPluginLauncher;
 import de.nilskoeb.infoplugin.listener.PlayerJoinListener;
 import de.nilskoeb.infoplugin.listener.PlayerQuitListener;
+import de.nilskoeb.infoplugin.manager.BackpackManager;
 import de.nilskoeb.infoplugin.manager.ScoreboardManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
@@ -17,12 +18,15 @@ public class InfoPlugin {
 
     private final InfoPluginLauncher infoPluginLauncher;
     private final ScoreboardManager scoreboardManager;
+    private final BackpackManager backpackManager;
+
 
     public InfoPlugin (InfoPluginLauncher infoPluginLauncher) {
         environment = this;
 
         this.infoPluginLauncher = infoPluginLauncher;
         this.scoreboardManager = new ScoreboardManager();
+        this.backpackManager = new BackpackManager();
 
         Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), infoPluginLauncher);
         Bukkit.getPluginManager().registerEvents(new PlayerQuitListener(), infoPluginLauncher);
@@ -35,8 +39,12 @@ public class InfoPlugin {
 
         infoPluginLauncher.getCommand("schinken").setExecutor(new SchinkenCommand());
         infoPluginLauncher.getCommand("enchant").setExecutor(new EnchantCommand());
+
     }
 
+    public BackpackManager getBackpackManager() {
+        return backpackManager;
+    }
 
     public ScoreboardManager getScoreboardManager() {
         return scoreboardManager;
