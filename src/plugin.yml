@@ -16,3 +16,6 @@ commands:
     description: Wechselt in den angegebenen Spielmodus
     usage: /gamemode <0,1,2,3> [Spieler]
     permission: infoplugin.command.gamemode
+  schinken:
+    description: Schenkt ein Stück Schinken
+    usage: /schinken

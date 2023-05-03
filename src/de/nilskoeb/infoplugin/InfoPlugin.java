@@ -2,6 +2,7 @@ package de.nilskoeb.infoplugin;
 
 import de.nilskoeb.infoplugin.commands.FlyCommand;
 import de.nilskoeb.infoplugin.commands.GameModeCommand;
+import de.nilskoeb.infoplugin.commands.SchinkenCommand;
 import de.nilskoeb.infoplugin.launcher.InfoPluginLauncher;
 import de.nilskoeb.infoplugin.listener.PlayerJoinListener;
 import de.nilskoeb.infoplugin.listener.PlayerQuitListener;
@@ -31,6 +32,7 @@ public class InfoPlugin {
         infoPluginLauncher.getCommand("gamemode").setExecutor(new GameModeCommand());
         infoPluginLauncher.getCommand("gamemode").setTabCompleter(new GameModeCommand());
 
+        infoPluginLauncher.getCommand("schinken").setExecutor(new SchinkenCommand());
     }
 
 

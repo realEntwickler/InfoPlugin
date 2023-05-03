@@ -96,7 +96,6 @@ public class GameModeCommand implements CommandExecutor, TabCompleter {
             if (commandSender.hasPermission("infoplugin.command.gamemode.other")) {
                 list = new ArrayList<>();
                 Bukkit.getOnlinePlayers().stream().filter(all -> all.getName().startsWith(strings[1])).forEach(all -> list.add(all.getName()));
-
                 return list;
             } else
                 return new ArrayList<>();
