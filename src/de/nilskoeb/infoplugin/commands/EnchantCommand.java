@@ -38,7 +38,7 @@ public class EnchantCommand implements CommandExecutor {
                             level = Integer.parseInt(strings[1]);
                         } catch (NumberFormatException exception) {
                             player.sendMessage(Prefix.GENERAL + "Du hast §ckeine §7Zahl angegeben");
-                            return false;
+                            return true;
                         }
 
                         player.getItemInHand().getItemMeta().addEnchant(enchantment, level, true);
@@ -55,6 +55,6 @@ public class EnchantCommand implements CommandExecutor {
         } else {
             commandSender.sendMessage(Prefix.CMD_NOT_PLAYER);
         }
-        return false;
+        return true;
     }
 }

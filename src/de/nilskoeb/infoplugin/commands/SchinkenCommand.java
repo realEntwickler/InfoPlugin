@@ -28,6 +28,6 @@ public class SchinkenCommand implements CommandExecutor {
         } else {
             commandSender.sendMessage(Prefix.CMD_NOT_PLAYER);
         }
-        return false;
+        return true;
     }
 }

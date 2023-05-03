@@ -21,5 +21,7 @@ public class PlayerJoinListener implements Listener {
         } else {
             InfoPlugin.environment().getScoreboardManager().getDefaultTeam().addEntry(player.getName());
         }
+
+        InfoPlugin.environment().getBackpackManager().registerPlayer(player);
     }
 }

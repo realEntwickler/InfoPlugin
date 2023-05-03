@@ -56,7 +56,7 @@ public class FlyCommand implements CommandExecutor, TabCompleter {
         } else {
             commandSender.sendMessage(Prefix.CMD_NOT_PLAYER);
         }
-        return false;
+        return true;
     }
 
     @Override

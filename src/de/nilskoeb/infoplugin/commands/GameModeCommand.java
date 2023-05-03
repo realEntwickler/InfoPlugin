@@ -82,7 +82,7 @@ public class GameModeCommand implements CommandExecutor, TabCompleter {
         } else {
             commandSender.sendMessage(Prefix.CMD_SEE_USAGE);
         }
-        return false;
+        return true;
     }
 
     @Override
